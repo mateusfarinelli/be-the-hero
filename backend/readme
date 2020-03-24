@@ -1,0 +1,35 @@
+Para esse projeto, pela primeira vez na Semana OmniStack, utilizaremos um banco SQL.
+
+Foi escolhido para esse caso o banco SQLite.
+
+Para trabalhar com banco de dados, temos que fazer uma escolha entre 3 opções:
+
+Trabalhar com Driver: que é a ferramenta dada pelo proprio banco para comunicação,
+nesse tipo de ferramenta, a query é feita utilizando lingaguem SQL, por exemplo:
+  SELECT * FROM users WHERE...
+
+Trabalhar com Query Builder: que é uma ferramenta de terceiros, onde a query é construida utilizando javascript,
+por exemplo:
+  table('users').select('*').where('...') ...
+
+Trabalhar com ORM/ODM: que também é uma ferramenta de terceiro, e que deixa a query mais legivel, geralmente
+utilizamos na semana OmniStack o mongoose como ORM para trabalhar com o MongoDB, um exemplo de query para encontrar um registro pelo ID é:
+  valor.findById(id)
+
+Para este projeto, vamos utilizar um query builder chamado Knex.js, talvez o mais famoso query builder para SQL dentro do universo JS.
+
+Entidades do projeto:
+
+  - ONG (cadastrar ONG)
+  - Casos (ONG cadastra CASOS)
+
+Funcionalidades:
+  
+  - Login ONG
+  - Logout
+  - Cadastro ONG
+  - Cadastrar Casos
+  - Deletar Casos
+  - Listar Casos especificos de uma ONG
+  - Listar todos os Casos
+  - Entrar em Contato ONG (WhatsAPP / E-mail)
