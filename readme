@@ -1,0 +1,92 @@
+Proprieades em ReactJS:
+
+  É quase a mesma coisa que o concenito de atributos no HTML.
+  As propriedades tem a mesma sintaxe de atribuitos em um HTML, porem as propriedades são passadas para um
+componente, ao inves de um elemento HTML.
+
+  Podemos tratar como componentes, trechos de código que serão repetidos diversas vezes na nossa aplicação,
+ou ainda trechos que podem ser encapsulados sem que afetem o restante da aplicação.
+
+  Todo componente criado, deve ser um arquivo JS a parte, que é nomeado com a primeira letra em maiusculo, caso contrario
+o mesmo não irá funcionar.
+
+  Vejamos o exemplo que fizemos, criamos um Componente chamado Header, que será apresentado em todas as páginas da aplicação,
+  A principio definimos uma tag h1 contendo "Be The Hero" que é o nome da aplicação.
+  Fazemos a importação do componente no arquivo App.js, e utilizamos o componente como <Header />, essa forma de auto fechamento é permitida
+pois, no App.js não iremos passar nenhum conteudo pra dentro do JSX, caso houvesse algum conteudo, seria necessario abrir e fechar a tag.
+  Posteriormente verificou-se o conceito de propriedades, então passamos a propriedade title ao componente com o valor "Semana Omni Stack",
+ficando com o seguinte componente <Header title="Semana OmniStack"/>.
+  Para que seja possível recuperar essa propriedade dentro do componente, na declaração da função do componente passamos um unico parametro
+que nomeamos de "props", permitindo que consigamos utilizar as propriedades dentro do componente fazendo o uso de {} para acessar o seu valor.
+  Assim chegamos ao componente: 
+
+    export default function Header(props) {
+      return (
+        <header>
+          <h1>Be The Hero - {props.title}</h1>
+        </header>
+      )
+    }
+
+  Outra forma de se utilizar as propriedaeds é passando-as como conteudo do componente e recebendo-as como prorps.children.
+  Por exemplo, dentro do arquivo App.js fazemos:
+
+    function App() {
+      return (
+        <Header>
+          Semana Omnistack
+        </Hedaer>
+      );
+    }
+  E dentro do componente no arquivo Header.js, capturamos a propriedade dessa forma:
+
+        export default function Header(props) {
+      return (
+        <header>
+          <h1>Be The Hero - {props.children}</h1>
+        </header>
+      )
+    }
+  Assim todo e qualquer conteudo (inclusve HTML) passado dentro do JSX Header será capturado automaticamente pelo props.children.
+
+  O Diego ainda coloca uma preferencia pessoal, dizendo que prefere desestruturar o objeto "propriedades" recebido como parametro no componente,
+  e pegar somente a(s) propriedade(s) de interesse, por exemplo:
+
+    export default function Header({ children }) {
+      return (
+        <header>
+          <h1>Be The Hero - {children}</h1>
+        </header>
+      )
+    }
+  Dessa forma só é recebido a propriedade children, e podemos usar ela diretamente no código, sem precisar apontar o objeto.
+
+Estado:
+
+  É uma informação que será mantida ou mesmo alterada pelo componente.
+  Diferente de uma variavel, um estado não pode ser alterado diretamente, é necessario fazer a sobreposição do valor.
+  Utilizando o metodo useState, consiguimos fazer isso, pois esse metodo retorna um array contendo na primeira posição o valor do estado e na segunda
+  posição uma função que sera responsavel por alterar o valor do estado, vejamos o exemplo:
+
+    import React, {useState} from 'react';
+
+    import Header from './Header'
+
+    function App() {
+      const [counter, setCounter] = useState(0)
+
+      function increment(){
+        setCounter(counter + 1)
+      }
+
+      return (
+        <Header Contador: {counter}></Header>
+        <button onClick={increment}>Incrementar</button>
+      );
+    }
+
+    export default App;
+  
+  Vejamos, primeiro foi feito a importação do metodo useState, depois dentro da função App, fazemos a desestruturação do useState.
+  Posteriormente utilizamos os valores counter e setCounter, dentro da função increment para que o contador funcione de fato e atualize o valor
+  de counter dentro do componente.
