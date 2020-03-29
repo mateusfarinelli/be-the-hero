@@ -1,0 +1,17 @@
+Diferente da web, o ReactNative não tem as mesmas tags que temos no HTML.
+
+Por exemplo a tag View é utilizada para qualquer container, como div, header, footer, section etc.
+A tag Text é utilziada para qualquer texto dentro do React Native.
+
+Logo as tags não tem semantica, ou seja, não tem significado.
+
+A estilização também é diferente, para adicionar estilziação um componente (tag) sempre receberá
+a propriedade "style" que recebe um objeto contendo as estilizações.
+
+Todos os elementos do React Native tem display "Flex" e não existe outro tipo de display.
+Além disso as propriedades tem seu nome em formato camelCase
+
+Também não há herança de estilos, é necessario atribuir um objeto de estilo para cada elemento do React Native
+
+Para navegação iremos trabalhar com o react-navigation que é uma biblioteca que auxilia na construção das rotas, mesmo estando
+trabalhando com o expo.
